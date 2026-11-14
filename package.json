@@ -1,0 +1,32 @@
+{
+  "name": "localcart",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "dev": "concurrently -k \"npm run dev -w server\" \"npm run dev -w client\"",
+    "build": "npm run build -w client",
+    "test": "npm test -w server",
+    "admin:create": "npm run admin:create -w server",
+    "setup:local": "node scripts/setup-local.mjs",
+    "db:local": "node scripts/local-db.mjs",
+    "images:cleanup": "node server/scripts/cleanup-images.js",
+    "images:verify": "node server/scripts/check-cloudinary.js",
+    "test:e2e": "npm run test:e2e -w client",
+    "deploy:validate": "node scripts/validate-blueprint.mjs",
+    "format": "prettier --write client/src server shared scripts client/tests client/*.js *.json *.md docs/*.md render.yaml"
+  },
+  "devDependencies": {
+    "ajv": "^8.20.0",
+    "ajv-formats": "^2.1.1",
+    "concurrently": "^9.2.0",
+    "prettier": "^3.10.1",
+    "yaml": "^2.9.1"
+  }
+}
