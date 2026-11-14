@@ -10,6 +10,7 @@
     "server"
   ],
   "scripts": {
+    "start": "node server/server.js",
     "dev": "concurrently -k \"npm run dev -w server\" \"npm run dev -w client\"",
     "build": "npm run build -w client",
     "test": "npm test -w server",
